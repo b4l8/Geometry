@@ -13,13 +13,20 @@ struct Vertex{
 };
 
 struct Edge {
-  Edge(int id):id_(id),twin_(nullptr),pre_(nullptr),succ_(nullptr),ori_(nullptr),inc_face_(nullptr){}
+  Edge(int id):id_(id),ori_(nullptr),end_(nullptr),left_(nullptr),right_(nullptr),p1_(nullptr),p2_(nullptr){}
   int id_;
-  Edge* twin_;
-  Edge* pre_;
-  Edge* succ_;
+  // origin of edge
   Vertex* ori_;
-  Face* inc_face_;
+  // end of edge
+  Vertex* end_;
+  // left/ down face divided by this edge
+  Face* left_;
+  // right/up face divided by this edge
+  Face* right_;
+  // assign first edge from ori in counter clock wise
+  Edge* p1_;
+  // assign first edge from end in counter clock wise
+  Edge* p2_;
 };
 
 struct Face {
